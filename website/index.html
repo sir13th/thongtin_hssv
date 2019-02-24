@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+  
+<div class="container">
+    <div class="alert alert-info">
+        <strong>Info!</strong> Please fill all information below and submit.
+    </div>
+    <form id="myForm">
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input type="text" class="form-control" id="title" name="title">
+        </div>
+        <div class="form-group">
+          <label for="content">Content:</label>
+          <input type="text" class="form-control" id="content" name="content">
+        </div>
+        <button id="submit" type="submit" class="btn btn-default">Submit</button>
+      </form>        
+</div>
+
+</body>
+<script>
+    $("#myForm").on("submit", function(e) {
+        e.preventDefault();
+        // get all the inputs into an array.
+        var $inputs = $('#myForm input,select,textarea');
+
+        // not sure if you wanted this, but I thought I'd add it.
+        // get an associative array of just the values.
+        var values = {};
+        $inputs.each(function() {
+            values[this.name] = $(this).val();
+        });
+
+        $.ajax({
+           type: "POST",
+           url: "../notes/",
+           dataType: "json",
+           success: function (msg) {
+               if (msg) {
+                   alert("Somebody" + name + " was added in list !");
+                   location.reload(true);
+               } else {
+                   alert("Cannot add to list !");
+               }
+           },
+
+           data: values
+       });
+    })
+</script>
+</html>
