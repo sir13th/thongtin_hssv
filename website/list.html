@@ -18,8 +18,12 @@
             <thead>
                 <tr>
                     <th data-field="_id">Item ID</th>
-                    <th data-field="title">Item Title</th>
-                    <th data-field="content">Item Content</th>
+                    <th data-field="title">Tên</th>
+                    <th data-field="content">Địa chỉ</th>
+                    <th data-field="brithday">Ngày sinh</th>
+                    <th data-field="phone">Số điện thoại</th>
+                    <th data-field="scholl">Trường</th>
+                    <th data-field="class">Lớp</th>
                 </tr>
             </thead>
         </table>
@@ -37,9 +41,13 @@
            url: "../../notes/",
            dataType: "json",
            success: function (msg) {
-               $('#table').bootstrapTable({
-                    data: msg
-                });
+
+            let list = msg.forEach(element => {
+                element.brithday = new Date(element.brithday).toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' });
+            });
+            $('#table').bootstrapTable({
+                data: msg
+            });
            },
        });
     
@@ -49,6 +57,13 @@
             name: "Results"
         });
     })
+    function formatDate(date) {
+    let year = date.getFullYear();
+    let month = (1 + date.getMonth()).toString().padStart(2, '0');
+    let day = date.getDate().toString().padStart(2, '0');
+  
+    return day + '/' + month + '/' + year;
+    }
 </script>
 
 </html>

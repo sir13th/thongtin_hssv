@@ -16,12 +16,28 @@
     </div>
     <form id="myForm">
         <div class="form-group">
-          <label for="title">Title:</label>
+          <label for="title">Tên:</label>
           <input type="text" class="form-control" id="title" name="title">
         </div>
         <div class="form-group">
-          <label for="content">Content:</label>
+          <label for="content">Địa chỉ:</label>
           <input type="text" class="form-control" id="content" name="content">
+        </div>
+        <div class="form-group">
+          <label for="brithday">Ngày sinh:</label>
+          <input type="date" class="form-control" id="brithday" name="brithday">
+        </div>
+        <div class="form-group">
+          <label for="phone">Số điện thoại:</label>
+          <input type="number" class="form-control" id="phone" name="phone" pattern="[0-9]{10}" required>
+        </div>
+        <div class="form-group">
+          <label for="scholl">Trường:</label>
+          <input type="text" class="form-control" id="scholl" name="scholl">
+        </div>
+        <div class="form-group">
+          <label for="class">Lớp:</label>
+          <input type="text" class="form-control" id="class" name="class">
         </div>
         <button id="submit" type="submit" class="btn btn-default">Submit</button>
       </form>        
